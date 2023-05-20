@@ -20,8 +20,9 @@ LogBox.ignoreLogs([
 ]);
 
 const Stack = createStackNavigator();
-const atlasClientId ='33OkryzDZsKwNKqmIhh6dct1a0PceRCrbvbFq5uQ9vAdRiMEQSshRV4pb7IzZn3FiuXVVO55dvGdNENwKwmC5Q==';
-const atlasClientSecret ='lrFxI-iSEg-s1jWpMVGUm7GLqL5o-TQsHERLT-iNuzw_a67OWGRZN2LuBG0yDSzSaq2DB3o6JPtDeGJpy1k-QVrcEZq_XQbo';
+
+const atlasClientId = '33OkryzDZsKwNKqmIhh6dct1a0PceRCrbvbFq5uQ9vAdRiMEQSshRV4pb7IzZn3FiuXVVO55dvGdNENwKwmC5Q==';
+const atlasClientSecret = 'lrFxI-iSEg-s1jWpMVGUm7GLqL5o-TQsHERLT-iNuzw_a67OWGRZN2LuBG0yDSzSaq2DB3o6JPtDeGJpy1k-QVrcEZq_XQbo';
 const mapSDKKey = '589912ac5aaee2f99a32d1df3af5e590';
 const restAPIKey = '589912ac5aaee2f99a32d1df3af5e590';
 
@@ -100,5 +101,3 @@ export default class App extends Component {
     );
   }
 }
-
-// https://github.com/mappls-api/mappls-react-native-sdk

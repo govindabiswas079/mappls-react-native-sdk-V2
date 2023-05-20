@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import MapplsGL from 'mappls-map-react-native';
 
 const layerStyles = {
   route: {
     lineColor: 'blue',
     lineCap: "round",
-    lineWidth: 3,
+    lineWidth: 5,
     lineOpacity: 0.84,
   },
 };
@@ -34,8 +34,8 @@ class DrawPolylineActivity extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
-        <MapplsGL.MapView style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
+        <MapplsGL.MapView style={{ flex: 1 }}>
           <MapplsGL.Camera
             zoomLevel={16}
             centerCoordinate={[77.100462, 28.705436]}
@@ -43,6 +43,15 @@ class DrawPolylineActivity extends Component {
 
           <MapplsGL.ShapeSource id="routeSource" shape={this.state.route}>
             <MapplsGL.LineLayer id="routeFill" style={layerStyles.route} />
+          </MapplsGL.ShapeSource>
+
+          <MapplsGL.ShapeSource id="actualSource" shape={this.state.route}>
+            <MapplsGL.LineLayer id="actualFill" style={{
+              lineColor: 'red',
+              lineCap: "round",
+              lineWidth: 3,
+              lineOpacity: 0.84,
+            }} />
           </MapplsGL.ShapeSource>
         </MapplsGL.MapView>
       </View>

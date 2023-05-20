@@ -1,12 +1,13 @@
-import React, {Component} from 'react';
-import {View} from 'react-native';
+import React, { Component } from 'react';
+import { View } from 'react-native';
 import MapplsGL from 'mappls-map-react-native';
-import {DEFAULT_CENTER_COORDINATE} from '../utils/index';
+import { DEFAULT_CENTER_COORDINATE } from '../utils/index';
 import exampleIcon from '../assets/marker.png';
+import carIcon from '../assets/car.png';
 
 const layerStyles = {
   singlePoint: {
-    iconImage: exampleIcon,
+    iconImage: ['get', 'iconImage'],
     iconAllowOverlap: true,
     iconSize: 0.2,
     iconAnchor: 'bottom',
@@ -49,17 +50,21 @@ class ClusteringActivity extends Component {
           properties: {
             id: 1,
             title: 'M 1.8 - 27km NE of Indio, CA',
+            iconImage: 'car'
+
           },
           geometry: {
             type: 'Point',
             coordinates: [77.391, 28.5355],
           },
+
         },
         {
           type: 'Feature',
           properties: {
             id: 2,
             title: 'M 0.4 - 9km WNW of Cobb, CA',
+            iconImage: 'example'
           },
           geometry: {
             type: 'Point',
@@ -71,6 +76,7 @@ class ClusteringActivity extends Component {
           properties: {
             id: 3,
             title: 'M 0.5 - 31 km SSE of Mina, Nevada',
+            iconImage: 'car'
           },
           geometry: {
             type: 'Point',
@@ -82,6 +88,7 @@ class ClusteringActivity extends Component {
           properties: {
             id: 4,
             title: 'M 3.8 - 4km ENE of Talmage, CA',
+            iconImage: 'example'
           },
           geometry: {
             type: 'Point',
@@ -93,6 +100,7 @@ class ClusteringActivity extends Component {
           properties: {
             id: 5,
             title: 'M 4.2 - 55 km S of Whites City, New Mexico',
+            iconImage: 'example'
           },
           geometry: {
             type: 'Point',
@@ -104,6 +112,7 @@ class ClusteringActivity extends Component {
           properties: {
             id: 6,
             title: 'M 2.3 - 1 km SSE of Magas Arriba, Puerto Rico',
+            iconImage: 'example'
           },
           geometry: {
             type: 'Point',
@@ -115,6 +124,7 @@ class ClusteringActivity extends Component {
           properties: {
             id: 8,
             title: 'M 1.3 - 11 km S of Tyonek, Alaska',
+            iconImage: 'example'
           },
           geometry: {
             type: 'Point',
@@ -126,6 +136,7 @@ class ClusteringActivity extends Component {
           properties: {
             id: 9,
             title: 'M 1.3 - 11 km S of Tyonek, India',
+            iconImage: 'car'
           },
           geometry: {
             type: 'Point',
@@ -160,8 +171,8 @@ class ClusteringActivity extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
-        <MapplsGL.MapView ref={r => (this.map = r)} style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
+        <MapplsGL.MapView ref={r => (this.map = r)} style={{ flex: 1 }}>
           <MapplsGL.Camera
             ref={r => (this.camera = r)}
             animationMode="moveTo"
@@ -169,11 +180,16 @@ class ClusteringActivity extends Component {
             centerCoordinate={DEFAULT_CENTER_COORDINATE}
           />
 
+          <MapplsGL.Images images={{ car: carIcon, example: exampleIcon, }} />
+          
+          {/* </MapplsGL.Images> */}
+          
+          
+          
           <MapplsGL.ShapeSource
             id="earthquakes"
             cluster={true}
             clusterRadius={50}
-            
             shape={this.state.clusterData}
             onPress={e => this.onMarkerClick(e)}>
             <MapplsGL.SymbolLayer
@@ -192,6 +208,7 @@ class ClusteringActivity extends Component {
               filter={['!', ['has', 'point_count']]}
               style={layerStyles.singlePoint}
             />
+
           </MapplsGL.ShapeSource>
         </MapplsGL.MapView>
       </View>
@@ -200,3 +217,4 @@ class ClusteringActivity extends Component {
 }
 
 export default ClusteringActivity;
+
